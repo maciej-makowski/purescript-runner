@@ -1,0 +1,15 @@
+{
+  "name": "purescript-runner",
+  "version": "0.0.1",
+  "description": "Node tool for running Purescript code",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Maciej Makowski",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "glob": "^4.2.1"
+  }
+}
