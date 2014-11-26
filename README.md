@@ -1,7 +1,7 @@
 # purescript-runner
 
-This is a small tool that allows the execution of [http://www.purescript.org/](Purescript) files
-directly from [http://nodejs.org/](Node.js).
+This is a small tool that allows the execution of [Purescript](http://www.purescript.org/) files
+directly from [Node.js](http://nodejs.org/)
 
 ## Dependencies
  * NodeJS
