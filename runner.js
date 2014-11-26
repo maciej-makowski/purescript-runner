@@ -5,8 +5,9 @@ var glob = require("glob");
 function noop () {
 }
 
-function Runner (files, options, cb) {
+function Runner (files, options, done) {
     options = options || {};
+    done = done || noop;
 
     var main = options.main || "";
     var modules = options.modules || [];
@@ -85,12 +86,12 @@ function Runner (files, options, cb) {
     }
 
     globFiles(function (err, files) {
-        if(err) return cb(err);
+        if(err) return done(err);
 
         compile(files, function (err, script) {
-            if(err) return cb(err);
+            if(err) return done(err);
 
-            runModule(script, cb);
+            runModule(script, done);
         });
     });
 

@@ -5,8 +5,7 @@ var options = {
     main: "Main"
 };
 
-runner.run("Main.purs", options, function (err, PS) {
-    if(err) {
-        return console.error(err);
-    }
+runner.run("Main.purs", {
+  modules: ["Main"],
+  main: "Main"
 });

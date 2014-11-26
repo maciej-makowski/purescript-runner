@@ -40,9 +40,8 @@ To fire and forget the `Main.main` module of Purescript application, the code ab
 ```javascript
 var runner = require("purescript-runner");
 
-runner.run("Main.purs", { modules: ["Main"], main: "Main" }, function (err) {
-  if(err) {
-    console.error("Purescript compilation failed:", err);
-  }
+runner.run("Main.purs", { 
+    modules: ["Main"],
+    main: "Main"
 });
 ```
