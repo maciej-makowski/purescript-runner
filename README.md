@@ -5,10 +5,12 @@ directly from [Node.js](http://nodejs.org/)
 
 ## Dependencies
  * NodeJS
- * Purescript compiler
+ * Purescript compiler (avaliable in the path)
 
 
-## Example usage
+## Examples
+
+### Simple case (no external dependencies)
 Assuming the following ``Main.purs`` file
 ```purescript
 module Main where
@@ -45,3 +47,43 @@ runner.run("Main.purs", {
     main: "Main"
 });
 ```
+
+### Loading scripts with dependencies
+Runner accept a single-glob or list of globs as its parameter, allowing to load multiple files:
+```javascript
+var runner = require("purescript-runner");
+
+runner.run(["src/**/*.purs", "Main.purs"], ...);
+```
+
+In addition, by default `bower_components/**/src/**/*.purs` is evaluated and matching files are passed to the
+Purescript compiler.
+
+## Usage
+### runner.run
+```javascript
+runner.run(files, [options, callback])
+```
+Compiles all the `files` and returns the resulting `PS` object as a second parameter of callback.
+  * `files` - `string` or array of `strings` conating path to the Purescript files to be copiled,
+  * `options` - options object, see options section for details,
+  * `callback` - `function` evalated after compilation. The following parameters are passed to the callback:
+    * `error` - `null` or error description, if an error occured
+    * `PS` - top-level Purescript object conating all the compiled modules. See 
+      [here](https://leanpub.com/purescript/read#leanpub-auto-calling-purescript-from-javascript) for
+      details
+
+### options
+Object, with following properties:
+  * `main` - optional main module passed to the Purescript compiler. This module is expected to export `main`
+             function that will be executed as the program entry point,
+  * `modules` - list of names of the modules which code must be included in the output. When this option is passed
+                it enables Purescript compiler dead-code detection. Modules not mentioned will only export
+                symbols that are necessary for required modules to execute. Passing this options drastically
+                decreses size of compilers output
+  * `externs` - externs passed to the Purescript compiler. See `psc --help` for details
+  * `verbose` - enables Purescript compiler verbose error reporting. See `psc --help` for details.
+  * `pscCmd` - path to the `psc` executable. By default the exacutable is assumed to be reachable from the `PATH`
+  * `logger` - object with the following methods
+    * `log: function(string)` - logs Purescript compiler standard output
+    * `error: function(string)` - logs Purescript compiler error output

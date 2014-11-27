@@ -57,11 +57,11 @@ function Runner (files, options, done) {
         var errOutput = "";
 
         psc.stdout.on("data", function (d) {
-            logInfo(d);
+            logInfo(d.toString());
             output += d;
         });
         psc.stderr.on("data", function (d) {
-            logError(d);
+            logError(d.toString());
             errOutput += d;
         });
         psc.on("exit", function (code) {
