@@ -106,8 +106,7 @@ FFI interfaces to standard NodeJS libraries and found the recompiling for testin
 pretty tedious.
 
 ## Why exporting whole environment instead of preparing CommonJS modules for Node to load?
-I have actually considering the `psc-make` approach and importing the Purescript code as separate modules at one point
-of time. However, Purescript module system is pretty much standalone and separate from NodeJS one (or CommonJS one
+I have actually considered the `psc-make` approach of importing the Purescript code as separate modules. However, Purescript module system is pretty much standalone and separate from NodeJS one (or CommonJS one
 for that matter) and it seemed to be an uphill battle to make these two work togather. In addition, the build modules 
 would have to be either placed in `node_modules` folder polutting it pretty badly, or some mangling with private parts 
 of NodeJS module system need to be done to make them load from arbitrary folders. Neither of those solutions seemed to
