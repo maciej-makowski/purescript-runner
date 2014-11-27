@@ -1,12 +1,23 @@
 {
   "name": "purescript-runner",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Node tool for running Purescript code",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
-  "author": "Maciej Makowski",
+  "author": {
+    "name": "Maciej Makowski"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfiet/purescript-runner"
+  },
+  "maintainers": [{
+    "name": "maciejm",
+    "email": "maciejm.purescript-runner@cfiet.net"
+  }],
+  "readme": "https://github.com/cfiet/purescript-runner/blob/master/README.md",
   "license": "MIT",
   "dependencies": {
     "async": "^0.9.0",

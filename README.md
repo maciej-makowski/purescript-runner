@@ -7,6 +7,8 @@ directly from [Node.js](http://nodejs.org/)
  * NodeJS
  * Purescript compiler (avaliable in the path)
 
+## Installation
+```npm install purescript-runner```
 
 ## Examples
 
@@ -42,7 +44,7 @@ To fire and forget the `Main.main` module of Purescript application, the code ab
 ```javascript
 var runner = require("purescript-runner");
 
-runner.run("Main.purs", { 
+runner.run("Main.purs", {
     modules: ["Main"],
     main: "Main"
 });
@@ -75,14 +77,15 @@ Compiles all the `files` and returns the resulting `PS` object as a second param
 
 ### options
 Object, with following properties:
-  * `main` - optional main module passed to the Purescript compiler. This module is expected to export `main`
-             function that will be executed as the program entry point,
+  * `main` - optional main module passed to the Purescript compiler. This module is expected to export `main` function that will be executed as the program entry point,
   * `modules` - list of names of the modules which code must be included in the output. When this option is passed
-                it enables Purescript compiler dead-code detection. Modules not mentioned will only export
-                symbols that are necessary for required modules to execute. Passing this options drastically
-                decreses size of compilers output
+      it enables Purescript compiler dead-code detection. Modules not mentioned will only export
+      symbols that are necessary for required modules to execute. Passing this options drastically
+      decreses size of compilers output
   * `externs` - externs passed to the Purescript compiler. See `psc --help` for details
   * `verbose` - enables Purescript compiler verbose error reporting. See `psc --help` for details.
+  * `noDefaultPaths` - stops runner from automatically adding all the files matching
+  `./bower_components/**/src/**/*.purs`
   * `pscCmd` - path to the `psc` executable. By default the exacutable is assumed to be reachable from the `PATH`
   * `logger` - object with the following methods
     * `log: function(string)` - logs Purescript compiler standard output
